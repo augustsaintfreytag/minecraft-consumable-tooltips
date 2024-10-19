@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "consumable_tooltips",
+	"version": "${version}",
+
+	"name": "Consumable Tooltips",
+	"description": "Adds a unified tooltip for consumable items, displaying satiety, saturation, hydration, and more.",
+	"authors": ["saint"],
+	"contact": {
+		"sources": "https://github.com/augustsaintfreytag/minecraft-consumable-tooltips"
+	},
+
+	"license": "MIT",
+	"icon": "assets/consumable_tooltips/icon.png",
+
+	"environment": "*",
+	"entrypoints": {
+		"main": ["net.saint.consumable_tooltips.Mod"],
+		"client": ["net.saint.consumable_tooltips.ClientMod"],
+		"modmenu": ["net.saint.consumable_tooltips.ModMenuIntegration"]
+	},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"fabric": "*",
+		"minecraft": ">=1.20",
+		"java": ">=17"
+	}
+}
