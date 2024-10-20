@@ -2,7 +2,19 @@
 
 # Consumable Tooltips
 
-A mod for Minecraft that introduces a unified tooltip for consumable items, showing hunger, saturation, hydration, and supported special status effects. Created with the goal to show consistently styled attributes of items that may come from or be modified by different mods. Primarily intended for *Spice of Fabric* and my opinionated fork of *Dehydration* (soon to be renamed and prepated for publication).
+A mod for Minecraft that introduces a unified tooltip for consumable items, showing hunger, saturation, hydration, and supported special status effects. Created with the goal to show consistently styled attributes of items that may come from or be modified by different mods. Primarily intended for *Spice of Fabric* and my opinionated fork of *Dehydration* (soon to be renamed and prepated for publication). Inspired by the tooltip design of the *Spice of Valheim* mod.
+
+## Features
+
+The mod introduces the following features:
+
+- Create an aesthetically pleasing, clean, and informative tooltip for consumables
+- Display hunger and saturation values (like *AppleSkin*)
+- Display hydration value (like *Dehydration*)
+- Support for *Spice of Fabric* and dynamic food values (e.g. diminishing nutrition)
+- Supports displaying an item's current player-specific value vs. its default values
+
+It is highly recommended to disable the tooltip rendering of *AppleSkin* and *Dehydration* to remove duplicate information and let *Consumable Tooltips* handle all of it.
 
 ## Preview
 
