@@ -17,7 +17,7 @@
 	"entrypoints": {
 		"main": ["net.saint.consumable_tooltips.Mod"],
 		"client": ["net.saint.consumable_tooltips.ClientMod"],
-		"modmenu": ["net.saint.consumable_tooltips.ModMenuIntegration"]
+		"modmenu": ["net.saint.consumable_tooltips.config.ModConfigMenuIntegration"]
 	},
 	"mixins": [],
 	"depends": {

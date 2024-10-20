@@ -1,0 +1,15 @@
+{
+	"text.autoconfig.consumable_tooltips.title": "Consumable Tooltips",
+
+	"text.autoconfig.consumable_tooltips.option.enableHealthTooltip": "Enable Health Tooltip",
+	"text.autoconfig.consumable_tooltips.option.enableHealthTooltip.comment": "Enable health rendering in tooltip.",
+
+	"text.autoconfig.consumable_tooltips.option.enableSatietyTooltip": "Enable Satiety Tooltip",
+	"text.autoconfig.consumable_tooltips.option.enableSatietyTooltip.comment": "Enable satiety rendering in tooltip.",
+
+	"text.autoconfig.consumable_tooltips.option.enableSaturationTooltip": "Enable Saturation Tooltip",
+	"text.autoconfig.consumable_tooltips.option.enableSaturationTooltip.comment": "Enable saturation rendering in tooltip.",
+
+	"text.autoconfig.consumable_tooltips.option.enableHydrationTooltip": "Enable Hydration Tooltip",
+	"text.autoconfig.consumable_tooltips.option.enableHydrationTooltip.comment": "Enable hydration rendering in tooltip."
+}
