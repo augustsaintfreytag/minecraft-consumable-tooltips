@@ -33,7 +33,7 @@ The tooltip for a potion inside *EMI* that has no hunger or saturation but a hyd
 
 ## Development
 
-The project depends on having a local version of my Dehydration fork that is loaded on configure. If you want to set up the project locally, you may have to also check out my fork of *Dehydration* and place the compiled *jar* file in `./libs/`, for example as `./libs/dehydration-1.4.1+forked.jar". Update the include path in `build.gradle` as necessary.
+The project depends on having a local version of my Dehydration fork that is loaded on configure. If you want to set up the project locally, you may have to also check out my fork of *Dehydration* and place the compiled *jar* file in `./libs/`, for example as `./libs/dehydration-1.4.1+forked.jar`. Update the include path in `build.gradle` as necessary.
 
 ## License
 
