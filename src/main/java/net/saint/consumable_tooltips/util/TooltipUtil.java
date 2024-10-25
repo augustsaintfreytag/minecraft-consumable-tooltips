@@ -16,6 +16,8 @@ public class TooltipUtil {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 
 	public static void addTooltip(ItemStack stack, TooltipContext context, List<Text> lines) {
+		assertTooltipLineOrder(lines);
+
 		var itemProperties = itemPropertiesForItem(stack);
 
 		if (itemProperties == null) {
@@ -38,6 +40,46 @@ public class TooltipUtil {
 			lines.addAll(createHydrationTooltip(itemProperties));
 			lines.addAll(createContaminationTooltip(itemProperties));
 		}
+	}
+
+	private static void assertTooltipLineOrder(List<Text> lines) {
+		if (lines.size() < 3) {
+			return;
+		}
+
+		var modNameLine = extractTooltipModNameLine(lines);
+
+		if (modNameLine == null) {
+			return;
+		}
+
+		lines.remove(modNameLine);
+		lines.add(1, modNameLine);
+	}
+
+	private static Text extractTooltipModNameLine(List<Text> lines) {
+		var modNameLineIndex = indexOfTooltipModNameLine(lines);
+
+		if (modNameLineIndex == -1) {
+			return null;
+		}
+
+		var modNameLine = lines.get(modNameLineIndex);
+		lines.remove(modNameLineIndex);
+
+		return modNameLine;
+	}
+
+	private static int indexOfTooltipModNameLine(List<Text> lines) {
+		for (int index = 1; index < lines.size(); index++) {
+			var line = lines.get(index);
+
+			if (line.getStyle().isItalic() || line.getString().contains("§9§o")) {
+				return index;
+			}
+		}
+
+		return -1;
 	}
 
 	private static List<Text> createHealthTooltip(ItemProperties itemProperties) {
