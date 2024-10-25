@@ -6,11 +6,14 @@ import org.slf4j.LoggerFactory;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 import net.saint.consumable_tooltips.config.ModConfig;
 import net.saint.consumable_tooltips.util.CapsaicinAccess;
 import net.saint.consumable_tooltips.util.DehydrationAccess;
 
 public class Mod implements ModInitializer {
+
+	public static final Identifier IDENTIFIER = new Identifier("consumable_tooltips");
 
 	public static final Logger LOGGER = LoggerFactory.getLogger("consumable_tooltips");
 
