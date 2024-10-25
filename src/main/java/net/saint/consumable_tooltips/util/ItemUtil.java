@@ -1,7 +1,6 @@
 package net.saint.consumable_tooltips.util;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.saint.consumable_tooltips.Mod;
@@ -15,10 +14,6 @@ public class ItemUtil {
 
 	public static ItemProperties itemPropertiesForItem(PlayerEntity player, ItemStack stack) {
 		var item = stack.getItem();
-
-		if (item instanceof BlockItem) {
-			return null;
-		}
 
 		var identifier = Registries.ITEM.getId(item);
 		var hungerValues = hungerValuesForStack(stack, player);
@@ -36,18 +31,15 @@ public class ItemUtil {
 			return new ItemHungerValues(0, 0, 0, 0);
 		}
 
-		var originalFoodProperties = foodProperties.originalFoodProperties;
-		var modifiedFoodProperties = foodProperties.modifiedFoodProperties;
+		var currentNutrition = foodProperties.modifiedHunger;
+		var currentSaturation = saturationValueFromHungerAndModifier(currentNutrition,
+				foodProperties.modifiedSaturationModifier);
 
-		var nutrition = modifiedFoodProperties.getHunger();
-		var saturation = saturationValueFromHungerAndModifier(nutrition,
-				modifiedFoodProperties.getSaturationModifier());
+		var defaultNutrition = foodProperties.defaultHunger;
+		var defaultSaturation = saturationValueFromHungerAndModifier(defaultNutrition,
+				foodProperties.defaultSaturationModifier);
 
-		var originalNutrition = originalFoodProperties.getHunger();
-		var originalSaturation = saturationValueFromHungerAndModifier(originalNutrition,
-				originalFoodProperties.getSaturationModifier());
-
-		return new ItemHungerValues(nutrition, saturation, originalNutrition, originalSaturation);
+		return new ItemHungerValues(currentNutrition, currentSaturation, defaultNutrition, defaultSaturation);
 	}
 
 	private static ItemHydrationValues hydrationValueForStack(ItemStack stack, PlayerEntity player) {
