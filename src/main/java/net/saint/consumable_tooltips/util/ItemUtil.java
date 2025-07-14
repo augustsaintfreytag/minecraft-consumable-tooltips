@@ -4,6 +4,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.saint.consumable_tooltips.Mod;
+import net.saint.consumable_tooltips.compat.SellingBinAccess;
 import net.saint.consumable_tooltips.library.ItemHungerValues;
 import net.saint.consumable_tooltips.library.ItemHydrationValues;
 import net.saint.consumable_tooltips.library.ItemProperties;
@@ -16,12 +17,23 @@ public class ItemUtil {
 		var item = stack.getItem();
 
 		var identifier = Registries.ITEM.getId(item);
+		var value = SellingBinAccess.tradeValueForItem(stack);
 		var hungerValues = hungerValuesForStack(stack, player);
 		var hydrationValues = hydrationValueForStack(stack, player);
 
-		return new ItemProperties(identifier, 0, hungerValues.nutrition, hungerValues.saturation,
-				hungerValues.defaultNutrition,
-				hungerValues.defaultSaturation, hydrationValues.hydration, hydrationValues.isContaminated);
+		var properties = new ItemProperties();
+
+		properties.id = identifier;
+		properties.value = value;
+		properties.health = 0;
+		properties.nutrition = hungerValues.nutrition;
+		properties.saturation = hungerValues.saturation;
+		properties.defaultNutrition = hungerValues.defaultNutrition;
+		properties.defaultSaturation = hungerValues.defaultSaturation;
+		properties.hydration = hydrationValues.hydration;
+		properties.isContaminated = hydrationValues.isContaminated;
+
+		return properties;
 	}
 
 	private static ItemHungerValues hungerValuesForStack(ItemStack stack, PlayerEntity player) {
