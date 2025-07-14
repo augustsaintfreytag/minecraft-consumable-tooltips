@@ -1,4 +1,4 @@
-package net.saint.consumable_tooltips.util;
+package net.saint.consumable_tooltips.compat;
 
 import java.util.ArrayList;
 
