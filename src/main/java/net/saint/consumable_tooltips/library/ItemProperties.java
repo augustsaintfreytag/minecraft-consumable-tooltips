@@ -6,30 +6,17 @@ public class ItemProperties {
 
 	public Identifier id;
 
-	public int health;
+	public double value = 0;
 
-	public int nutrition;
-	public int saturation;
+	public int health = 0;
 
-	public int defaultNutrition;
-	public int defaultSaturation;
+	public int nutrition = 0;
+	public int saturation = 0;
 
-	public int hydration;
-	public boolean isContaminated;
+	public int defaultNutrition = 0;
+	public int defaultSaturation = 0;
 
-	public ItemProperties(Identifier id, int health, int nutrition, int saturation, int defaultNutrition,
-			int defaultSaturation, int hydration, boolean isContaminated) {
-		this.id = id;
-
-		this.health = health;
-
-		this.nutrition = nutrition;
-		this.saturation = saturation;
-		this.defaultNutrition = defaultNutrition;
-		this.defaultSaturation = defaultSaturation;
-
-		this.hydration = hydration;
-		this.isContaminated = isContaminated;
-	}
+	public int hydration = 0;
+	public boolean isContaminated = false;
 
 }

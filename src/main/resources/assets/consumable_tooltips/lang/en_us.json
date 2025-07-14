@@ -11,5 +11,8 @@
 	"text.autoconfig.consumable_tooltips.option.enableSaturationTooltip.comment": "Enable saturation rendering in tooltip.",
 
 	"text.autoconfig.consumable_tooltips.option.enableHydrationTooltip": "Enable Hydration Tooltip",
-	"text.autoconfig.consumable_tooltips.option.enableHydrationTooltip.comment": "Enable hydration rendering in tooltip."
+	"text.autoconfig.consumable_tooltips.option.enableHydrationTooltip.comment": "Enable hydration rendering in tooltip.",
+
+	"text.autoconfig.consumable_tooltips.option.enableCurrencyValueTooltip": "Enable Currency Value Tooltip",
+	"text.autoconfig.consumable_tooltips.option.enableCurrencyValueTooltip.comment": "Enable currency value rendering in tooltip."
 }

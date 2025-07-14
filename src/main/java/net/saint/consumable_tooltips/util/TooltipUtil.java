@@ -40,6 +40,10 @@ public class TooltipUtil {
 			lines.addAll(createHydrationTooltip(itemProperties));
 			lines.addAll(createContaminationTooltip(itemProperties));
 		}
+
+		if (Mod.CONFIG.enableCurrencyValueTooltip) {
+			lines.addAll(createCurrencyValueTooltip(itemProperties));
+		}
 	}
 
 	private static void assertTooltipLineOrder(List<Text> lines) {
@@ -138,13 +142,25 @@ public class TooltipUtil {
 				.getWithStyle(Style.EMPTY.withColor(Formatting.AQUA));
 	}
 
+	private static List<Text> createCurrencyValueTooltip(ItemProperties itemProperties) {
+		var value = itemProperties.value;
+
+		if (value == 0) {
+			return List.of();
+		}
+
+		var formattedValue = CurrencyValueFormattingUtil.formattedCurrencyValueWithAccents(value);
+		return Text.literal("¤ " + formattedValue + " Spurs")
+				.getWithStyle(Style.EMPTY.withColor(Formatting.GREEN));
+	}
+
 	private static List<Text> createContaminationTooltip(ItemProperties itemProperties) {
 		if (!itemProperties.isContaminated) {
 			return List.of();
 		}
 
 		return Text.literal("☠ Contaminated")
-				.getWithStyle(Style.EMPTY.withColor(Formatting.GREEN));
+				.getWithStyle(Style.EMPTY.withColor(Formatting.LIGHT_PURPLE));
 	}
 
 	private static ItemProperties itemPropertiesForItem(ItemStack stack) {

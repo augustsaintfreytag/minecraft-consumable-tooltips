@@ -19,4 +19,7 @@ public class ModConfig implements ConfigData {
 	@Comment("Enable hydration rendering in tooltip.")
 	public boolean enableHydrationTooltip = true;
 
+	@Comment("Enable currency value rendering in tooltip.")
+	public boolean enableCurrencyValueTooltip = true;
+
 }

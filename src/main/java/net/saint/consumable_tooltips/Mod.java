@@ -7,9 +7,9 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
+import net.saint.consumable_tooltips.compat.CapsaicinAccess;
+import net.saint.consumable_tooltips.compat.DehydrationAccess;
 import net.saint.consumable_tooltips.config.ModConfig;
-import net.saint.consumable_tooltips.util.CapsaicinAccess;
-import net.saint.consumable_tooltips.util.DehydrationAccess;
 
 public class Mod implements ModInitializer {
 
@@ -18,6 +18,7 @@ public class Mod implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("consumable_tooltips");
 
 	public static DehydrationAccess DEHYDRATION_ACCESS;
+
 	public static CapsaicinAccess CAPSAICIN_ACCESS;
 
 	public static ModConfig CONFIG;
@@ -29,6 +30,8 @@ public class Mod implements ModInitializer {
 
 		DEHYDRATION_ACCESS = new DehydrationAccess();
 		CAPSAICIN_ACCESS = new CapsaicinAccess();
+
+		ModCommands.registerCommands();
 	}
 
 }
