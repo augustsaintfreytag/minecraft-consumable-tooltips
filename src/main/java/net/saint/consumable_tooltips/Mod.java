@@ -30,6 +30,8 @@ public class Mod implements ModInitializer {
 
 		DEHYDRATION_ACCESS = new DehydrationAccess();
 		CAPSAICIN_ACCESS = new CapsaicinAccess();
+
+		ModCommands.registerCommands();
 	}
 
 }
