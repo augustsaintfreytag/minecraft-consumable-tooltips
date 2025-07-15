@@ -4,7 +4,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.saint.consumable_tooltips.Mod;
-import net.saint.consumable_tooltips.compat.SellingBinAccess;
+import net.saint.consumable_tooltips.compat.CommercializeAccess;
 import net.saint.consumable_tooltips.library.ItemHungerValues;
 import net.saint.consumable_tooltips.library.ItemHydrationValues;
 import net.saint.consumable_tooltips.library.ItemProperties;
@@ -17,9 +17,9 @@ public class ItemUtil {
 		var item = stack.getItem();
 
 		var identifier = Registries.ITEM.getId(item);
-		var value = SellingBinAccess.tradeValueForItem(stack);
-		var hungerValues = hungerValuesForStack(stack, player);
-		var hydrationValues = hydrationValueForStack(stack, player);
+		var value = CommercializeAccess.valueForItem(stack);
+		var hungerValues = getHungerValuesForStack(stack, player);
+		var hydrationValues = getHydrationValueForStack(stack, player);
 
 		var properties = new ItemProperties();
 
