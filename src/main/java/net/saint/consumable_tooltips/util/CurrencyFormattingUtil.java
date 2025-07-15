@@ -1,6 +1,6 @@
 package net.saint.consumable_tooltips.util;
 
-public final class CurrencyValueFormattingUtil {
+public final class CurrencyFormattingUtil {
 
 	public static String formattedCurrencyValueWithAccents(double value) {
 		var prefix = currencyValueInaccuracyPrefix(value);
