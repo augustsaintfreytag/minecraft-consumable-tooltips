@@ -4,7 +4,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.saint.consumable_tooltips.Mod;
-import net.saint.consumable_tooltips.compat.SellingBinAccess;
+import net.saint.consumable_tooltips.compat.CommercializeAccess;
 import net.saint.consumable_tooltips.library.ItemHungerValues;
 import net.saint.consumable_tooltips.library.ItemHydrationValues;
 import net.saint.consumable_tooltips.library.ItemProperties;
@@ -17,9 +17,9 @@ public class ItemUtil {
 		var item = stack.getItem();
 
 		var identifier = Registries.ITEM.getId(item);
-		var value = SellingBinAccess.tradeValueForItem(stack);
-		var hungerValues = hungerValuesForStack(stack, player);
-		var hydrationValues = hydrationValueForStack(stack, player);
+		var value = CommercializeAccess.valueForItem(stack);
+		var hungerValues = getHungerValuesForStack(stack, player);
+		var hydrationValues = getHydrationValueForStack(stack, player);
 
 		var properties = new ItemProperties();
 
@@ -36,7 +36,7 @@ public class ItemUtil {
 		return properties;
 	}
 
-	private static ItemHungerValues hungerValuesForStack(ItemStack stack, PlayerEntity player) {
+	private static ItemHungerValues getHungerValuesForStack(ItemStack stack, PlayerEntity player) {
 		var foodProperties = Mod.CAPSAICIN_ACCESS.getModifiedFoodPropertiesForStack(stack, player);
 
 		if (foodProperties == null) {
@@ -44,24 +44,24 @@ public class ItemUtil {
 		}
 
 		var currentNutrition = foodProperties.modifiedHunger;
-		var currentSaturation = saturationValueFromHungerAndModifier(currentNutrition,
+		var currentSaturation = getSaturationValueFromHungerAndModifier(currentNutrition,
 				foodProperties.modifiedSaturationModifier);
 
 		var defaultNutrition = foodProperties.defaultHunger;
-		var defaultSaturation = saturationValueFromHungerAndModifier(defaultNutrition,
+		var defaultSaturation = getSaturationValueFromHungerAndModifier(defaultNutrition,
 				foodProperties.defaultSaturationModifier);
 
 		return new ItemHungerValues(currentNutrition, currentSaturation, defaultNutrition, defaultSaturation);
 	}
 
-	private static ItemHydrationValues hydrationValueForStack(ItemStack stack, PlayerEntity player) {
+	private static ItemHydrationValues getHydrationValueForStack(ItemStack stack, PlayerEntity player) {
 		var hydrationValue = Mod.DEHYDRATION_ACCESS.getHydrationForItemStack(stack, player);
 		var isContaminated = Mod.DEHYDRATION_ACCESS.getIsItemStackContaminated(stack);
 
 		return new ItemHydrationValues(hydrationValue, isContaminated);
 	}
 
-	private static int saturationValueFromHungerAndModifier(int hungerValue, float saturationModifier) {
+	private static int getSaturationValueFromHungerAndModifier(int hungerValue, float saturationModifier) {
 		return (int) (hungerValue * saturationModifier * 2f);
 	}
 

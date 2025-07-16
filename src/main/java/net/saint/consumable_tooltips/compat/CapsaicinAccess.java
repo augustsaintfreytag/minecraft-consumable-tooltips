@@ -12,7 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.saint.consumable_tooltips.library.ItemFoodProperties;
 
-public class CapsaicinAccess {
+public final class CapsaicinAccess {
 
 	private static final boolean USE_APPLE_SKIN_LIKE_ACCESS = true;
 

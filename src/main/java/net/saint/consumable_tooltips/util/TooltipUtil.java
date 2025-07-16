@@ -149,7 +149,7 @@ public class TooltipUtil {
 			return List.of();
 		}
 
-		var formattedValue = CurrencyValueFormattingUtil.formattedCurrencyValueWithAccents(value);
+		var formattedValue = CurrencyFormattingUtil.formattedCurrencyValueWithAccents(value);
 		return Text.literal("¤ " + formattedValue + " Spurs")
 				.getWithStyle(Style.EMPTY.withColor(Formatting.GREEN));
 	}
